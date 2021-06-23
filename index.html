@@ -79,7 +79,7 @@
 
       <!--Year-->
       <div class="col-md-2">
-        <select class="form-control" id="ano">
+        <select class="form-control" id="year">
           <option value="">Ano</option>
           <option value="2018">2018</option>
         </select>
@@ -87,7 +87,7 @@
 
       <!--Month-->
       <div class="col-md-2">
-        <select class="form-control" id="mes">
+        <select class="form-control" id="month">
           <option value="">Mês</option>
           <option value="1">Janeiro</option>
           <option value="2">Fevereiro</option>
@@ -106,13 +106,13 @@
 
       <!--Day-->
       <div class="col-md-2">
-        <input type="text" class="form-control" placeholder="Dia" id="dia" />
+        <input type="text" class="form-control" placeholder="Dia" id="day" />
       </div>
 
       <!--Type-->
       <div class="col-md-6">
-        <select class="form-control" id="tipo">
-          <option>Tipo</option>
+        <select class="form-control" id="type">
+          <option value="">Tipo</option>
           <option value="1">Alimentação</option>
           <option value="2">Educação</option>
           <option value="3">Lazer</option>
@@ -129,17 +129,17 @@
 
       <!--Desc-->
       <div class="col-md-8">
-        <input type="text" class="form-control" placeholder="Descrição" id="descricao" />
+        <input type="text" class="form-control" placeholder="Descrição" id="desc" />
       </div>
 
       <!--Value-->
       <div class="col-md-2">
-        <input type="text" class="form-control" placeholder="Valor" id="valor" />
+        <input type="text" class="form-control" placeholder="Valor" id="value" />
       </div>
 
       <!--Button-->
       <div class="col-md-2 d-flex justify-content-end">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-primary" onclick="registry()">
           <i class="fas fa-plus"></i>
         </button>
       </div>
