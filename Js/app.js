@@ -9,6 +9,34 @@ class Expenses {
     }
 }
 
+class Bd {
+
+    constructor() {
+        
+        let id = localStorage.getItem('id');
+        
+        if(id === null) {
+            localStorage.setItem('id', 0);
+        }
+    }
+
+    getNextId() {
+
+        let nextId = localStorage.getItem('id');
+        return parseInt(nextId) + 1;
+    }
+
+    save(data) {
+
+        let id = this.getNextId();
+
+        localStorage.setItem(id, JSON.stringify(data));
+        localStorage.setItem('id', id);
+    }
+}
+
+let bd = new Bd();
+
 function registry() {
 
     let year = document.getElementById('year');
@@ -20,6 +48,5 @@ function registry() {
 
     let expenses = new Expenses(year.value, month.value, day.value, type.value, desc.value , value.value);
 
-    console.log(expenses);
-
+    bd.save(expenses);
 }
