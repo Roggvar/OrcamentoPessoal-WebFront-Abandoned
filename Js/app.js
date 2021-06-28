@@ -60,9 +60,11 @@ function registry() {
     let expenses = new Expenses(year.value, month.value, day.value, type.value, desc.value , value.value);
 
     if(expenses.dataCheck()) {
-        //bd.save(expenses);
-        console.log('Dados Validos')
+
+        bd.save(expenses);
+        $('#saveSuccess').modal('show');
     }else {
-        console.log('Dados Invalidos')
+
+        $('#saveError').modal('show');
     }
 }
