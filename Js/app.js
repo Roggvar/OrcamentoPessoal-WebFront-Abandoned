@@ -7,6 +7,17 @@ class Expenses {
         this.desc = desc;
         this.value = value;
     }
+
+    dataCheck() {
+
+        for(let i in this) {
+            if(this[i] == undefined || this[i] == '' || this[i] == null) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 class Bd {
@@ -48,5 +59,10 @@ function registry() {
 
     let expenses = new Expenses(year.value, month.value, day.value, type.value, desc.value , value.value);
 
-    bd.save(expenses);
+    if(expenses.dataCheck()) {
+        //bd.save(expenses);
+        console.log('Dados Validos')
+    }else {
+        console.log('Dados Invalidos')
+    }
 }
