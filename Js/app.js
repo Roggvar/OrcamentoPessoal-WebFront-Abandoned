@@ -66,6 +66,40 @@ class Bd {
         return expenses;
     }
 
+    search(expense) {
+
+        let filterExpenses = Array();
+
+        filterExpenses = this.returnAllRegistry();
+
+        if (expense.year != '') {
+            filterExpenses = filterExpenses.filter(d => d.year == expense.year);
+        }
+
+        if (expense.month != '') {
+            filterExpenses = filterExpenses.filter(d => d.month == expense.month);
+        }
+
+        if (expense.day != '') {
+            filterExpenses = filterExpenses.filter(d => d.day == expense.day);
+        }
+
+        if (expense.type != '') {
+            filterExpenses = filterExpenses.filter(d => d.type == expense.type);
+        }
+
+        if (expense.desc != '') {
+            filterExpenses = filterExpenses.filter(d => d.desc == expense.desc);
+        }
+
+        if (expense.value != '') {
+            filterExpenses = filterExpenses.filter(d => d.value == expense.value);
+        }
+
+
+        return filterExpenses;
+    }
+
 }
 // Class Bd End
 
@@ -149,3 +183,49 @@ function loadExpenseList() {
     )
 }
 // Function loadExpenseList End
+
+// Function searchExpenses Begin
+function searchExpenses() {
+    let year = document.getElementById('year').value;
+    let month = document.getElementById('month').value;
+    let day = document.getElementById('day').value;
+    let type = document.getElementById('type').value;
+    let desc = document.getElementById('desc').value;
+    let value = document.getElementById('value').value;
+
+    let expenses = new Expenses(year, month, day, type, desc, value);
+
+    let ranOutOfNames = bd.search(expenses);
+
+    //-----------------------------------------
+
+    let expensesList = document.getElementById('expensesList');
+    expensesList.innerHTML = '';
+
+    ranOutOfNames.forEach(
+        function (d) {
+
+            let row = expensesList.insertRow()
+            row.insertCell(0).innerHTML = d.day + '/' + d.month + '/' + d.year;
+
+            switch (d.type) {
+                case '1': d.type = 'Alimentação';
+                    break;
+                case '2': d.type = 'Educação';
+                    break;
+                case '3': d.type = 'Lazer';
+                    break;
+                case '4': d.type = 'Saúde';
+                    break;
+                case '5': d.type = 'Transporte';
+                    break;
+            }
+
+            row.insertCell(1).innerHTML = d.type;
+            row.insertCell(2).innerHTML = d.desc;
+            row.insertCell(3).innerHTML = d.value;
+
+        }
+    )
+}
+// Function searchExpenses End
